@@ -76,7 +76,7 @@
       <input type="password" ng-model="user.password">
       <br><br>
      <strong>Mobile no.:</strong><br>
-      <input type="number" ng-model="user.mobilenumber">
+      <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ng-model="user.mobilenumber" required>
       <br><br>
       <button ng-click="login()">login</button>
       <button ng-click="signin()">sign in</button>
