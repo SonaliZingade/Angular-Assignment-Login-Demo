@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<style >
+    form{
+      padding: 8%;
+      border: 2px solid gray;
+    }
+    
+    .experience{
+      column-count: 2;
+    }
+    .skills{
+      column-count: 2;
+    }
+    .addProject{
+      column-count: 2;
+    }
+    .ALC{
+      column-count: 2;
+    }
+    .addCourse{
+      column-count: 2;
+    }
+    .contact{
+      column-count: 2;
+    }
+    input[type=text], select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 8xpx;
+        box-sizing: border-box;
+      }
+      
+      input[type=password], select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 18px;
+      }
+      input[type=number], select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 18px;
+      }
+      input[type=email], select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 18px;
+      }
+      input[type=date], select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 18px;
+      }
+      input[type=url], select {
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 18px;
+      }
+      button {
+        width: 20%;
+        background-color: #7eea84;
+        color: rgb(6, 4, 4);
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      
+      input[type=login]:hover {
+        background-color: #45a049;
+      }
+      
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+}
+  </style>
+<body>
+
+<div ng-app="myApp" ng-controller="formCtrl">
+  <form novalidate>
+    <h1>Onboarding Form & View Profile</h1>
+    <p>Full Name:</p><br>
+    <input type="text" ng-model="user.fullName"><br>
+    <hr>
+    <div class="experience" >
+    <h2>Experience</h2>
+    Company Name:<br>
+    <input type="text" ng-model="user.companyName"><br>
+    Position:<br>
+    <input type="text" ng-model="user.Position"><br>
+    Date of Joining/Date of resign:<br>
+    <input type="date" ng-model="user.date"><br>
+    Work Description:<br>
+    <input type="text" ng-model="user.workdetails"><br>
+    Used Skills:<br>
+    <input type="text" ng-model="user.Skills"><br>
+    </div>
+    <hr>
+    <div class="skills">
+    <h2>Skills</h2>
+    Year of Experience:<br>
+    <input type="number" ng-model="user.experience"><br>
+    Skills Name:<br>
+    <input type="text" ng-model="user.addSkill"><br>
+            <button ng-click="addSkill()">Add</button>     
+      </div>
+    <br>
+    <hr>
+    <div class="addProject">
+    <h2>Add Project</h2><br>
+    Project Title:<br>
+    <input type="text" ng-model="user.projectTitle"><br>
+    Project Description:<br>
+    <input type="text" ng-model="user.text"><br>
+    Project Url:<br>
+    <input type="url" ng-model="user.url"><br>
+    Project Duration:<br>
+    <input type="date" ng-model="user.date"><br>
+  </div>
+    <hr>
+    <div class="ALC">
+    <h2>Add licenses & certifications</h2>
+    Name:<br>
+    <input type="text" ng-model="user.certiName"><br>
+    Issuing Organization:<br>
+    <input type="text"  ng-model="user.Organization" required ><br>
+    Certificate Link:<br>
+    <input type="url" ng-model="user.certiUrl"><br>
+    Issue Date:<br>
+    <input type="date" ng-model="user.date"><br>
+    Issue Date:<br>
+    <input type="date" ng-model="user.date"><br></div>
+    <hr>
+    <div class="addCourse">
+    <h2>Add course</h2>
+    Course Name:<br>
+    <input type="text" ng-model="user.text"><br>
+    Issuing organisation:<br>
+    <input type="text" ng-model="user.text"><br>
+  </div>
+  <hr>
+  <div class="contact">
+    <h2>Contact Info</h2>
+    Email:<br>
+    <input type="email" ng-model="user.abc@email.com"><br>
+    Phone Number:<br>
+    <input type="tel" id="phone" name="phone" placeholder="12345-67228" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ng-model="user.number"><br>
+    Skype Id:<br>
+    <input type="url" ng-model="user.url"><br></div>
+    <br><br>
+    <button ng-click="resetForm()">RESET</button>
+    <button ng-click="onSubmit()">Submit</button>
+  </form>
+  
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.master = {fullName:"text", companyName:"companyName",position:"position",DateOfJoining:"date",workDescription:"workDetails",
+             UserSkills:"userskills ",yearOfExperience:"number", skillsName:"addSkills",projectTitle:"projectTitle",
+             ProjectUrl:"url",ProjectDescription:"text", ProjectDuration:"date", Name:"certiName",issuingOrganization:"organization",
+            certificatelink:"Url",issueDate:"date ",courseName:"text",issuingOrganization:"text",
+             email:"abc@email.com", phoneNumber:"number",skypeId:"url"};
+    $scope.resetForm = function() {
+      this.myform.reset();
+    };  
+    
+    onSubmit() {
+  if (this.myform.valid) {
+    console.log("Form Submitted!");
+  }
+}
+   
+    $scope.addSkill = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+
+});
+</script>
+
+</body>
+</html>
