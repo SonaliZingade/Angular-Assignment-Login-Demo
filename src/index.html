@@ -76,10 +76,11 @@
       <input type="password" ng-model="user.password">
       <br><br>
      <strong>Mobile no.:</strong><br>
-      <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" ng-model="user.mobilenumber" required>
+      <input type="tel" id="phone" name="phone" placeholder="12345-67228" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+      ng-model="user.mobileNumber" required>
       <br><br>
-      <button ng-click="login()">login</button>
-      <button ng-click="signin()">sign in</button>
+      <button ng-click="login()">Login</button>
+      <button ng-click="signup()">Sign Up</button>
     </form>
   </div>
   
@@ -91,10 +92,10 @@
           $scope.user = angular.copy($scope.master);
       };
       $scope.login();
-      $scope.signin = function() {
+      $scope.signup = function() {
           $scope.user = angular.copy($scope.master);
       };
-      $scope.signin();
+      $scope.signup();
   });
   </script>
 </body>
